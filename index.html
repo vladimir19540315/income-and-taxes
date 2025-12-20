@@ -3,82 +3,135 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Income & Taxes — скачать</title>
+  <title>Учет доходов — скачать APK</title>
   <style>
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      max-width: 720px;
+      max-width: 760px;
       margin: 40px auto;
       padding: 0 16px;
       background: #fff;
       color: #111;
     }
-    h1 { margin-bottom: 8px; }
-    .muted { color: #666; font-size: 14px; line-height: 1.4; }
+    h1 { margin: 0 0 6px; }
+    h2 { margin: 0 0 8px; }
+    h3 { margin: 16px 0 8px; }
+    .muted { color: #666; font-size: 14px; line-height: 1.45; }
     .card {
       border: 1px solid #ddd;
       border-radius: 16px;
       padding: 16px;
       margin-top: 16px;
     }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
     .btn {
       display: inline-block;
       padding: 12px 16px;
       border-radius: 12px;
       text-decoration: none;
       border: 1px solid #111;
-      font-weight: 500;
+      font-weight: 600;
+      color: #111;
+      background: #fff;
     }
-    ul, ol { padding-left: 20px; }
+    .btn.primary {
+      background: #111;
+      color: #fff;
+    }
+    ul, ol { padding-left: 20px; margin: 8px 0; }
     code {
       background: #f5f5f5;
       padding: 2px 6px;
       border-radius: 6px;
     }
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      padding: 4px 8px;
+      border: 1px solid #ddd;
+      border-radius: 999px;
+      margin-left: 8px;
+      color: #333;
+      background: #fafafa;
+      vertical-align: middle;
+    }
+    .warn {
+      border-left: 4px solid #ffcc00;
+      padding-left: 12px;
+      margin: 10px 0;
+    }
+    .footer {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid #eee;
+    }
   </style>
 </head>
 <body>
 
-<h1>Income & Taxes</h1>
+<h1>Учет доходов</h1>
 <p class="muted">
-Учёт доходов на Android.  
-Скачивание напрямую, без Google Play.
+Учёт доходов на Android. Скачивание напрямую, без Google Play.
 </p>
 
 <div class="card">
   <h2>Скачать</h2>
-  <p>
-    <a class="btn"
+  <p class="muted" style="margin-top:6px;">
+    Рекомендуется скачивать <b>последнюю версию</b>. Если у вас уже установлено приложение —
+    установка новой версии поверх обновит приложение (данные сохраняются).
+  </p>
+
+  <!-- ✅ ВАЖНО: здесь ты обновляешь только версию и ссылку при каждом релизе -->
+  <div class="row" style="margin-top:10px;">
+    <a class="btn primary"
        href="https://github.com/vladimir19540315/income-and-taxes/releases/download/v1.0.0/income-and-taxes-1.0.0.apk">
-      Скачать APK 1.0.0
+      Скачать APK <span class="badge">1.0.0</span>
     </a>
-  </p>
 
-  <p class="muted">
-    Android может показать предупреждение о безопасности — это нормально
-    для APK вне Google Play.
-  </p>
+    <a class="btn"
+       href="https://github.com/vladimir19540315/income-and-taxes/releases">
+      Все версии (Releases)
+    </a>
+  </div>
 
-  <h3>Как установить</h3>
+  <div class="warn muted">
+    Android может показать предупреждение о безопасности — это нормально для APK вне Google Play.
+  </div>
+
+  <h3>Как установить (первый раз)</h3>
   <ol class="muted">
-    <li>Скачай APK</li>
-    <li>Открой файл</li>
-    <li>Разреши установку из этого источника</li>
-    <li>Установи приложение</li>
+    <li>Скачайте APK (кнопка выше).</li>
+    <li>Откройте скачанный файл.</li>
+    <li>Если Android попросит — разрешите установку из этого источника (браузер/файловый менеджер).</li>
+    <li>Нажмите “Установить”.</li>
   </ol>
+
+  <h3>Как обновиться</h3>
+  <ol class="muted">
+    <li>Скачайте новый APK (последняя версия).</li>
+    <li>Откройте APK и установите <b>поверх</b> существующего приложения.</li>
+    <li>Данные сохраняются, если вы не удаляли приложение вручную.</li>
+  </ol>
+
+  <h3>Где посмотреть версию в приложении</h3>
+  <p class="muted">
+    Откройте: <b>Настройки → О приложении</b>.
+  </p>
 
   <h3>Что есть в приложении</h3>
   <ul class="muted">
-    <li>Добавление доходов</li>
-    <li>Категории</li>
-    <li>Выбор даты</li>
-    <li>Итог за месяц</li>
-    <li>Экспорт в PDF</li>
+    <li>Доходы: добавление, редактирование, удаление</li>
+    <li>Отчёты: месяц / квартал / год</li>
+    <li>Сводка по категориям + фильтр по категории</li>
+    <li>Экспорт PDF (общий и по категории)</li>
+    <li>Валюта: выбор в настройках</li>
+    <li>PRO: снятие лимита записей и пользовательские категории</li>
   </ul>
 </div>
 
-<p class="muted" style="margin-top:16px;">
-Версия: <code>1.0.0</code>
+<p class="muted footer">
+Текущая версия на странице: <code>1.0.0</code> •
+Ссылка на релизы: <code>github.com/vladimir19540315/income-and-taxes/releases</code>
 </p>
 
 </body>
