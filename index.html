@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<head> 
+<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Учет доходов — скачать APK</title>
@@ -38,6 +38,10 @@
       background: #111;
       color: #fff;
     }
+    .btn[aria-disabled="true"]{
+      opacity: 0.6;
+      pointer-events: none;
+    }
     ul, ol { padding-left: 20px; margin: 8px 0; }
     code {
       background: #f5f5f5;
@@ -60,6 +64,11 @@
       padding-left: 12px;
       margin: 10px 0;
     }
+    .ok {
+      border-left: 4px solid #3ddc84;
+      padding-left: 12px;
+      margin: 10px 0;
+    }
     .footer {
       margin-top: 16px;
       padding-top: 12px;
@@ -76,22 +85,28 @@
 
 <div class="card">
   <h2>Скачать</h2>
+
   <p class="muted" style="margin-top:6px;">
-    Рекомендуется скачивать <b>последнюю версию</b>. Если у вас уже установлено приложение —
-    установка новой версии поверх обновит приложение (данные сохраняются).
+    Кнопка ниже автоматически берёт <b>последний релиз</b> из GitHub Releases.
+    Если что-то не загрузилось — открой “Все версии” и скачай APK вручную.
   </p>
 
-  <!-- ✅ ВАЖНО: здесь ты обновляешь только версию и ссылку при каждом релизе -->
   <div class="row" style="margin-top:10px;">
-    <a class="btn primary"
-       href="https://github.com/vladimir19540315/income-and-taxes/releases/download/v1.0.0/income-and-taxes-1.0.0.apk">
-      Скачать APK <span class="badge">1.0.0</span>
+    <a id="btn-latest"
+       class="btn primary"
+       aria-disabled="true"
+       href="https://github.com/vladimir19540315/income-and-taxes/releases/latest">
+      Скачать последнюю версию <span class="badge" id="badge-version">…</span>
     </a>
 
     <a class="btn"
        href="https://github.com/vladimir19540315/income-and-taxes/releases">
       Все версии (Releases)
     </a>
+  </div>
+
+  <div id="status" class="muted warn" style="margin-top:12px;">
+    Загружаю информацию о последней версии…
   </div>
 
   <div class="warn muted">
@@ -130,9 +145,72 @@
 </div>
 
 <p class="muted footer">
-Текущая версия на странице: <code>1.0.0</code> •
-Ссылка на релизы: <code>github.com/vladimir19540315/income-and-taxes/releases</code>
+Репозиторий: <code>github.com/vladimir19540315/income-and-taxes</code>
 </p>
+
+<script>
+  (function () {
+    const owner = 'vladimir19540315';
+    const repo = 'income-and-taxes';
+    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
+
+    const btn = document.getElementById('btn-latest');
+    const badge = document.getElementById('badge-version');
+    const status = document.getElementById('status');
+
+    function setWarn(msg) {
+      status.className = 'muted warn';
+      status.textContent = msg;
+    }
+
+    function setOk(msg) {
+      status.className = 'muted ok';
+      status.textContent = msg;
+    }
+
+    fetch(apiUrl, {
+      headers: { 'Accept': 'application/vnd.github+json' }
+    })
+      .then(r => {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(data => {
+        const tag = data.tag_name || '';
+        const assets = Array.isArray(data.assets) ? data.assets : [];
+
+        // Ищем .apk в ассетах (первый подходящий)
+        const apk = assets.find(a =>
+          a && typeof a.name === 'string' &&
+          a.name.toLowerCase().endsWith('.apk') &&
+          typeof a.browser_download_url === 'string'
+        );
+
+        if (!apk) {
+          badge.textContent = tag ? tag : 'latest';
+          btn.setAttribute('aria-disabled', 'false');
+          // оставляем ссылку на releases/latest
+          setWarn('Не нашёл APK в последнем релизе. Открой “Все версии” и скачай вручную.');
+          return;
+        }
+
+        // Готово: прямая ссылка на APK
+        btn.href = apk.browser_download_url;
+        btn.setAttribute('aria-disabled', 'false');
+
+        // Версию показываем как tag_name (например v1.0.1)
+        badge.textContent = tag ? tag : 'latest';
+        setOk(`Готово: последняя версия ${badge.textContent}. Файл: ${apk.name}`);
+      })
+      .catch(err => {
+        badge.textContent = 'latest';
+        btn.setAttribute('aria-disabled', 'false');
+        // остаётся ссылка на /releases/latest
+        setWarn('Не удалось загрузить информацию о последней версии (GitHub API). Нажми кнопку — откроется последний релиз.');
+        console && console.log && console.log(err);
+      });
+  })();
+</script>
 
 </body>
 </html>
