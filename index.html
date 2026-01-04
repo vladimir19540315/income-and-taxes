@@ -1,216 +1,98 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Учет доходов — скачать APK</title>
+  <title>Income Tracker — Download APK</title>
   <style>
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      max-width: 760px;
+      max-width: 720px;
       margin: 40px auto;
       padding: 0 16px;
       background: #fff;
       color: #111;
     }
-    h1 { margin: 0 0 6px; }
-    h2 { margin: 0 0 8px; }
-    h3 { margin: 16px 0 8px; }
-    .muted { color: #666; font-size: 14px; line-height: 1.45; }
+    h1 { margin-bottom: 8px; }
+    .muted { color: #666; font-size: 14px; line-height: 1.4; }
     .card {
       border: 1px solid #ddd;
       border-radius: 16px;
       padding: 16px;
       margin-top: 16px;
     }
-    .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
     .btn {
       display: inline-block;
       padding: 12px 16px;
       border-radius: 12px;
       text-decoration: none;
       border: 1px solid #111;
-      font-weight: 600;
-      color: #111;
-      background: #fff;
+      font-weight: 500;
     }
-    .btn.primary {
-      background: #111;
-      color: #fff;
-    }
-    .btn[aria-disabled="true"]{
-      opacity: 0.6;
-      pointer-events: none;
-    }
-    ul, ol { padding-left: 20px; margin: 8px 0; }
+    ul, ol { padding-left: 20px; }
     code {
       background: #f5f5f5;
       padding: 2px 6px;
       border-radius: 6px;
     }
-    .badge {
-      display: inline-block;
-      font-size: 12px;
-      padding: 4px 8px;
-      border: 1px solid #ddd;
-      border-radius: 999px;
-      margin-left: 8px;
-      color: #333;
-      background: #fafafa;
-      vertical-align: middle;
-    }
-    .warn {
-      border-left: 4px solid #ffcc00;
-      padding-left: 12px;
-      margin: 10px 0;
-    }
-    .ok {
-      border-left: 4px solid #3ddc84;
-      padding-left: 12px;
-      margin: 10px 0;
-    }
-    .footer {
-      margin-top: 16px;
-      padding-top: 12px;
-      border-top: 1px solid #eee;
-    }
   </style>
 </head>
 <body>
 
-<h1>Учет доходов</h1>
+<h1>Income Tracker</h1>
 <p class="muted">
-Учёт доходов на Android. Скачивание напрямую, без Google Play.
+Simple income tracking app for freelancers and self-employed.  
+Direct download — no Google Play.
 </p>
 
 <div class="card">
-  <h2>Скачать</h2>
-
-  <p class="muted" style="margin-top:6px;">
-    Кнопка ниже автоматически берёт <b>последний релиз</b> из GitHub Releases.
-    Если что-то не загрузилось — открой “Все версии” и скачай APK вручную.
-  </p>
-
-  <div class="row" style="margin-top:10px;">
-    <a id="btn-latest"
-       class="btn primary"
-       aria-disabled="true"
-       href="https://github.com/vladimir19540315/income-and-taxes/releases/latest">
-      Скачать последнюю версию <span class="badge" id="badge-version">…</span>
-    </a>
-
+  <h2>Download</h2>
+  <p>
     <a class="btn"
-       href="https://github.com/vladimir19540315/income-and-taxes/releases">
-      Все версии (Releases)
+       href="https://github.com/vladimir19540315/income-and-taxes/releases/download/v1.0.0/income-tracker-1.0.0.apk">
+      Download APK 1.0.0
     </a>
-  </div>
-
-  <div id="status" class="muted warn" style="margin-top:12px;">
-    Загружаю информацию о последней версии…
-  </div>
-
-  <div class="warn muted">
-    Android может показать предупреждение о безопасности — это нормально для APK вне Google Play.
-  </div>
-
-  <h3>Как установить (первый раз)</h3>
-  <ol class="muted">
-    <li>Скачайте APK (кнопка выше).</li>
-    <li>Откройте скачанный файл.</li>
-    <li>Если Android попросит — разрешите установку из этого источника (браузер/файловый менеджер).</li>
-    <li>Нажмите “Установить”.</li>
-  </ol>
-
-  <h3>Как обновиться</h3>
-  <ol class="muted">
-    <li>Скачайте новый APK (последняя версия).</li>
-    <li>Откройте APK и установите <b>поверх</b> существующего приложения.</li>
-    <li>Данные сохраняются, если вы не удаляли приложение вручную.</li>
-  </ol>
-
-  <h3>Где посмотреть версию в приложении</h3>
-  <p class="muted">
-    Откройте: <b>Настройки → О приложении</b>.
   </p>
 
-  <h3>Что есть в приложении</h3>
+  <p class="muted">
+    Android may show a security warning — this is normal for apps
+    installed outside Google Play.
+  </p>
+
+  <h3>How to install</h3>
+  <ol class="muted">
+    <li>Download the APK file</li>
+    <li>Open the file</li>
+    <li>Allow installation from this source</li>
+    <li>Install the app</li>
+  </ol>
+
+  <h3>Features</h3>
   <ul class="muted">
-    <li>Доходы: добавление, редактирование, удаление</li>
-    <li>Отчёты: месяц / квартал / год</li>
-    <li>Сводка по категориям + фильтр по категории</li>
-    <li>Экспорт PDF (общий и по категории)</li>
-    <li>Валюта: выбор в настройках</li>
-    <li>PRO: снятие лимита записей и пользовательские категории</li>
+    <li>Add income records</li>
+    <li>Categories</li>
+    <li>Date selection</li>
+    <li>Monthly totals</li>
+    <li>PDF export</li>
   </ul>
+
+  <h3>PRO version</h3>
+  <ul class="muted">
+    <li>Unlimited income records</li>
+    <li>Custom categories</li>
+    <li>Reports: month / quarter / year</li>
+    <li>PDF export</li>
+  </ul>
+
+  <p class="muted">
+    PRO price: <strong>€9.99 — one-time purchase</strong><br/>
+    No subscription.
+  </p>
 </div>
 
-<p class="muted footer">
-Репозиторий: <code>github.com/vladimir19540315/income-and-taxes</code>
+<p class="muted" style="margin-top:16px;">
+Version: <code>1.0.0</code>
 </p>
-
-<script>
-  (function () {
-    const owner = 'vladimir19540315';
-    const repo = 'income-and-taxes';
-    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
-
-    const btn = document.getElementById('btn-latest');
-    const badge = document.getElementById('badge-version');
-    const status = document.getElementById('status');
-
-    function setWarn(msg) {
-      status.className = 'muted warn';
-      status.textContent = msg;
-    }
-
-    function setOk(msg) {
-      status.className = 'muted ok';
-      status.textContent = msg;
-    }
-
-    fetch(apiUrl, {
-      headers: { 'Accept': 'application/vnd.github+json' }
-    })
-      .then(r => {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      })
-      .then(data => {
-        const tag = data.tag_name || '';
-        const assets = Array.isArray(data.assets) ? data.assets : [];
-
-        // Ищем .apk в ассетах (первый подходящий)
-        const apk = assets.find(a =>
-          a && typeof a.name === 'string' &&
-          a.name.toLowerCase().endsWith('.apk') &&
-          typeof a.browser_download_url === 'string'
-        );
-
-        if (!apk) {
-          badge.textContent = tag ? tag : 'latest';
-          btn.setAttribute('aria-disabled', 'false');
-          // оставляем ссылку на releases/latest
-          setWarn('Не нашёл APK в последнем релизе. Открой “Все версии” и скачай вручную.');
-          return;
-        }
-
-        // Готово: прямая ссылка на APK
-        btn.href = apk.browser_download_url;
-        btn.setAttribute('aria-disabled', 'false');
-
-        // Версию показываем как tag_name (например v1.0.1)
-        badge.textContent = tag ? tag : 'latest';
-        setOk(`Готово: последняя версия ${badge.textContent}. Файл: ${apk.name}`);
-      })
-      .catch(err => {
-        badge.textContent = 'latest';
-        btn.setAttribute('aria-disabled', 'false');
-        // остаётся ссылка на /releases/latest
-        setWarn('Не удалось загрузить информацию о последней версии (GitHub API). Нажми кнопку — откроется последний релиз.');
-        console && console.log && console.log(err);
-      });
-  })();
-</script>
 
 </body>
 </html>
